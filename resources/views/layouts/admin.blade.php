@@ -7,7 +7,7 @@
     <title>@yield('title', 'Dashboard') - Panel Admin DRIP GO.FEE</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <style>
+    <style nonce="{{ $cspNonce }}">
         body { font-family: 'Segoe UI', sans-serif; background: #f4f6f9; }
         .sidebar { background: #2c3e50; min-height: 100vh; padding-top: 1rem; }
         .sidebar .nav-link { color: rgba(255,255,255,0.8); padding: 0.8rem 1rem; border-radius: 5px; margin: 2px 8px; }
@@ -82,8 +82,8 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" nonce="{{ $cspNonce }}"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" nonce="{{ $cspNonce }}"></script>
     @stack('scripts')
 </body>
 </html>

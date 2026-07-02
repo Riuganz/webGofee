@@ -124,5 +124,6 @@
 @endsection
 
 @push('scripts')
-<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}" nonce="{{ $cspNonce }}"></script>
+<script src="{{ asset('js/payment.js') }}" nonce="{{ $cspNonce }}"></script>
 @endpush
