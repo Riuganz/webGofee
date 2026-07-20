@@ -24,7 +24,7 @@
     @forelse($menus as $menu)
         @if(!request('kategori') || request('kategori') == $menu->id_kategori)
         <div class="col-md-4 col-lg-3 mb-4">
-            <div class="product-card">
+            <div class="product-card card-3d">
                 @if($menu->foto)
                     <img src="{{ asset('storage/' . $menu->foto) }}" class="product-img" alt="{{ $menu->nama_menu }}">
                 @else

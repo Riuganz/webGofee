@@ -13,11 +13,25 @@ use Illuminate\Support\Facades\DB;
 
 class ReservasiController extends Controller
 {
-    public function createDineIn()
+    public function createDineIn(Request $request)
     {
-        $mejas = Meja::where('status_meja', 'Tersedia')->get();
         $menus = Menu::with('kategori')->where('stok_status', 'Tersedia')->get();
-        return view('customer.reservasi_dinein', compact('mejas', 'menus'));
+
+        $tanggal = $request->query('tanggal', date('Y-m-d'));
+        $jam = $request->query('jam', date('H:i'));
+        $jumlahOrang = $request->query('jumlah_orang', 1);
+
+        // Ambil semua meja (ketersediaan ditentukan dari tabel reservasi, bukan status_meja)
+        $mejas = Meja::where('kapasitas', '>=', $jumlahOrang)
+            ->get();
+
+        // Ambil id_meja yang sudah dibooking di tanggal tersebut (untuk 1 hari penuh)
+        $bookedMejaIds = Reservasi::where('tanggal', $tanggal)
+            ->whereIn('status_reservasi', ['Menunggu Konfirmasi', 'Diterima'])
+            ->pluck('id_meja')
+            ->toArray();
+
+        return view('customer.reservasi_dinein', compact('mejas', 'menus', 'bookedMejaIds', 'tanggal', 'jam', 'jumlahOrang'));
     }
 
     public function createPickUp()
@@ -46,10 +60,9 @@ class ReservasiController extends Controller
             // Validate table availability for dine-in
             if ($request->tipe === 'dine-in') {
                 $meja = Meja::findOrFail($request->id_meja);
-                // Double booking prevention
+                // Double booking prevention (cekp berdasarkan tanggal, bukan jam)
                 $existingReservasi = Reservasi::where('id_meja', $request->id_meja)
                     ->where('tanggal', $request->tanggal)
-                    ->where('jam', $request->jam)
                     ->whereIn('status_reservasi', ['Menunggu Konfirmasi', 'Diterima'])
                     ->exists();
 
@@ -95,11 +108,6 @@ class ReservasiController extends Controller
                     'jumlah_beli' => $item['jumlah_beli'],
                     'subtotal' => $item['subtotal'],
                 ]);
-            }
-
-            // Update meja status to Dibooking for dine-in
-            if ($request->tipe === 'dine-in') {
-                $meja->update(['status_meja' => 'Dibooking']);
             }
 
             DB::commit();

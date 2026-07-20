@@ -5,7 +5,7 @@
 @section('content')
 <div class="row justify-content-center" style="padding: 3rem 0;">
     <div class="col-md-6">
-        <div class="card" style="border: none; border-radius: 20px; box-shadow: var(--card-shadow);">
+        <div class="card card-3d" style="border: none; border-radius: 20px;">
             <div class="card-body p-5">
                 <div class="text-center mb-4">
                     <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #1e3a5f, #2563eb); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">

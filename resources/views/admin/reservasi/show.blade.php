@@ -2,7 +2,7 @@
 
 @section('title', 'Detail Reservasi')
 @section('content')
-<div class="card shadow-sm">
+<div class="card shadow-card card-3d">
     <div class="card-header d-flex justify-content-between align-items-center
         @if($reservasi->status_reservasi == 'Menunggu Konfirmasi') bg-warning text-dark
         @elseif($reservasi->status_reservasi == 'Diterima') bg-info text-white

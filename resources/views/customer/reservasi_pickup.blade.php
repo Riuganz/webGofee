@@ -2,7 +2,7 @@
 
 @section('title', 'Pick-Up Order')
 @section('content')
-<div class="card shadow-sm">
+<div class="card shadow-card card-3d">
     <div class="card-header bg-success text-white">
         <h5 class="mb-0"><i class="bi bi-bag-plus"></i> Form Pesanan Pick-Up</h5>
     </div>
@@ -33,7 +33,7 @@
                 <div class="row" id="menuList">
                     @foreach($menus as $menu)
                         <div class="col-md-4 col-lg-3 mb-3">
-                            <div class="card card-menu shadow-sm" data-menu-id="{{ $menu->id_menu }}" data-harga="{{ $menu->harga }}">
+                            <div class="card card-menu shadow-card card-3d" data-menu-id="{{ $menu->id_menu }}" data-harga="{{ $menu->harga }}">
                                 <div class="card-body p-3">
                                     <div class="d-flex justify-content-between align-items-start">
                                         <h6 class="mb-0">{{ $menu->nama_menu }}</h6>

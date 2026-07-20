@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\DetailPesanan;
+use App\Models\Meja;
 use App\Models\Menu;
 use App\Models\Reservasi;
 use Illuminate\Http\Request;
@@ -13,7 +14,8 @@ class KasirController extends Controller
     public function create()
     {
         $menus = Menu::with('kategori')->where('stok_status', 'Tersedia')->get();
-        return view('admin.kasir.create', compact('menus'));
+        $mejas = Meja::where('status_meja', 'Tersedia')->get();
+        return view('admin.kasir.create', compact('menus', 'mejas'));
     }
 
     public function store(Request $request)
@@ -21,6 +23,7 @@ class KasirController extends Controller
         $request->validate([
             'nama_pelanggan' => 'required|string|max:255',
             'tipe' => 'required|in:dine-in,pick-up',
+            'id_meja' => 'required_if:tipe,dine-in|exists:meja,id_meja',
             'items' => 'required|array',
             'items.*.id_menu' => 'required|exists:menu,id_menu',
             'items.*.jumlah' => 'required|integer|min:1',
@@ -42,7 +45,7 @@ class KasirController extends Controller
 
         $reservasi = Reservasi::create([
             'id_user' => auth()->id(),
-            'id_meja' => null,
+            'id_meja' => $request->tipe === 'dine-in' ? $request->id_meja : null,
             'tanggal' => now()->toDateString(),
             'jam' => now()->toTimeString(),
             'jumlah_orang' => 1,
@@ -51,6 +54,11 @@ class KasirController extends Controller
             'total_harga' => $total,
             'status_reservasi' => 'Selesai',
         ]);
+
+        // Update status meja menjadi Terisi jika dine-in
+        if ($request->tipe === 'dine-in' && $request->id_meja) {
+            Meja::where('id_meja', $request->id_meja)->update(['status_meja' => 'Terisi']);
+        }
 
         foreach ($items as $item) {
             DetailPesanan::create([

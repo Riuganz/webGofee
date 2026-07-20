@@ -7,43 +7,43 @@
 <div class="hero-premium">
     <div class="row align-items-center">
         <div class="hero-content col-md-7">
-            <div class="hero-label">☕ Premium Coffee Shop</div>
-            <h1 class="hero-title">Coffee Shop</h1>
-            <div class="hero-subtitle">CRAFTED FOR YOUR SENSES</div>
+            <div class="hero-label">☕ Kedai Kopi Premium</div>
+            <h1 class="hero-title">Kedai Kopi</h1>
+            <div class="hero-subtitle">DIBUAT UNTUK RASA ANDA</div>
             <p class="hero-desc">
-                Experience the rich, authentic taste of premium roasted coffee beans. Every cup is freshly brewed by our expert baristas to give you the perfect start to your day.
+                Rasakan cita rasa kopi premium yang kaya dan otentik. Setiap cangkir diseduh segar oleh barista ahli kami untuk memberikan awal yang sempurna untuk hari Anda.
             </p>
             <div class="mb-4">
-                <a href="{{ route('customer.menu') }}" class="btn-explore">Explore Menu →</a>
-                <a href="#about" class="btn-outline-hero">About Us</a>
+                <a href="{{ route('customer.menu') }}" class="btn-explore">Jelajahi Menu →</a>
+                <a href="#about" class="btn-outline-hero">Tentang Kami</a>
             </div>
             <div class="row g-3 mt-2">
                 <div class="col-md-4">
-                    <div class="feature-card">
-                        <div class="feature-icon">🗄️</div>
-                        <h6>Premium Beans</h6>
-                        <p>We use only the finest 100% Arabica beans.</p>
-                    </div>
+                        <div class="feature-card box-3d-bevel">
+                            <div class="feature-icon">🗄️</div>
+                            <h6>Biji Kopi Premium</h6>
+                            <p>Kami hanya menggunakan biji Arabica 100% terbaik.</p>
+                        </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="feature-card">
-                        <div class="feature-icon">🍃</div>
-                        <h6>Freshly Brewed</h6>
-                        <p>Brewed fresh for every order, every time.</p>
-                    </div>
+                        <div class="feature-card box-3d-bevel">
+                            <div class="feature-icon">🍃</div>
+                            <h6>Diseduh Segar</h6>
+                            <p>Diseduh segar untuk setiap pesanan, setiap saat.</p>
+                        </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="feature-card">
-                        <div class="feature-icon">💙</div>
-                        <h6>Made with Love</h6>
-                        <p>Passion, care and perfection in every cup.</p>
-                    </div>
+                        <div class="feature-card box-3d-bevel">
+                            <div class="feature-icon">💙</div>
+                            <h6>Dibuat dengan Cinta</h6>
+                            <p>Gairah, perhatian dan kesempurnaan dalam setiap cangkir.</p>
+                        </div>
                 </div>
             </div>
         </div>
         <div class="col-md-5">
             <div class="hero-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=500&auto=format&fit=crop" alt="Iced Coffee Latte" class="img-fluid">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOVmo33QvrfhSBAZv6GGsoAD3RGVTGh3aqYH8jF3WpolSHH9MBmcojy5bn&s=10" alt="Latte Kopi Dingin" class="img-fluid">
                 <div class="hero-badge">GLÈSE ET BRED</div>
             </div>
         </div>
@@ -55,36 +55,36 @@
     <div class="row align-items-center g-5">
         <div class="col-md-6">
             <div class="about-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&auto=format&fit=crop" alt="Latte Art Coffee">
+                <img src="{{ asset('storage/image/latecoffe.jpeg') }}" alt="Seni Latte Kopi">
             </div>
         </div>
         <div class="col-md-6">
-            <div class="section-label">ABOUT US</div>
-            <h2 class="section-title">More Than Just Coffee</h2>
+            <div class="section-label">TENTANG KAMI</div>
+            <h2 class="section-title">Lebih Dari Sekadar Kopi</h2>
             <p class="about-desc mt-3">
-                We are passionate about coffee and committed to serving you the best experience. From carefully selected beans to expertly crafted brews, we bring quality and comfort together.
+                Kami bersemangat tentang kopi dan berkomitmen untuk memberikan pengalaman terbaik. Dari biji yang dipilih dengan hati-hati hingga seduhan yang dibuat ahli, kami gabungkan kualitas dan kenyamanan.
             </p>
             <div class="row g-3 mt-4">
                 <div class="col-4">
-                    <div class="stat-item">
-                        <div class="stat-icon">☕</div>
-                        <div class="stat-number">100+</div>
-                        <div class="stat-label">Drink Options</div>
-                    </div>
+                        <div class="stat-item box-3d-elevated">
+                            <div class="stat-icon">☕</div>
+                            <div class="stat-number">100+</div>
+                            <div class="stat-label">Pilihan Minuman</div>
+                        </div>
                 </div>
                 <div class="col-4">
-                    <div class="stat-item">
-                        <div class="stat-icon">👥</div>
-                        <div class="stat-number">50K+</div>
-                        <div class="stat-label">Happy Customers</div>
-                    </div>
+                        <div class="stat-item box-3d-elevated">
+                            <div class="stat-icon">👥</div>
+                            <div class="stat-number">50K+</div>
+                            <div class="stat-label">Pelanggan Puas</div>
+                        </div>
                 </div>
                 <div class="col-4">
-                    <div class="stat-item">
-                        <div class="stat-icon">🏆</div>
-                        <div class="stat-number">8+</div>
-                        <div class="stat-label">Awards Won</div>
-                    </div>
+                        <div class="stat-item box-3d-elevated">
+                            <div class="stat-icon">🏆</div>
+                            <div class="stat-number">8+</div>
+                            <div class="stat-label">Penghargaan</div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -95,28 +95,31 @@
 <div class="mb-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
-            <div class="section-label">POPULAR PICKS</div>
-            <h2 class="section-title">Customer Favorites</h2>
+            <div class="section-label">PILIHAN POPULER</div>
+            <h2 class="section-title">Favorit Pelanggan</h2>
         </div>
-        <a href="{{ route('customer.menu') }}" class="section-link">View All →</a>
+                <a href="{{ route('customer.menu') }}" class="section-link">Lihat Semua →</a>
     </div>
     <div class="row g-4">
-        @php
-            $popularItems = [
-                ['name' => 'Espresso', 'price' => 25000, 'desc' => 'Bold and intense dark roast espresso shot.', 'img' => 'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=300&h=300&fit=crop'],
-                ['name' => 'Cookie', 'price' => 35000, 'desc' => 'Freshly baked chocochip cookies.', 'img' => 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=300&h=300&fit=crop'],
-                ['name' => 'Cappuccino', 'price' => 35000, 'desc' => 'Perfect balance of espresso and milk.', 'img' => 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=300&h=300&fit=crop'],
-                ['name' => 'Chocolate Cake', 'price' => 40000, 'desc' => 'Rich, moist and irresistibly good.', 'img' => 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&h=300&fit=crop'],
-            ];
-        @endphp
-        @foreach($popularItems as $item)
+        @foreach($popularMenus as $menu)
         <div class="col-md-3 col-6">
-            <div class="product-card">
-                <img src="{{ $item['img'] }}" class="product-img" alt="{{ $item['name'] }}">
+            <div class="product-card card-3d">
+                @if($menu->foto)
+                    <img src="{{ asset('storage/' . $menu->foto) }}" class="product-img" alt="{{ $menu->nama_menu }}">
+                @else
+                    <div class="product-img-placeholder">
+                        <i class="bi bi-cup-straw"></i>
+                    </div>
+                @endif
                 <div class="product-body">
-                    <h5 class="product-name">{{ $item['name'] }}</h5>
-                    <p class="product-desc">{{ $item['desc'] }}</p>
-                    <div class="product-price">Rp {{ number_format($item['price'], 0, ',', '.') }}</div>
+                    <h5 class="product-name">{{ $menu->nama_menu }}</h5>
+                    @if($menu->deskripsi)
+                        <p class="product-desc">{{ $menu->deskripsi }}</p>
+                    @endif
+                    <div class="product-price">Rp {{ number_format($menu->harga, 0, ',', '.') }}</div>
+                    @if($menu->kategori)
+                        <small style="color: #9ca3af;"><i class="bi bi-tag"></i> {{ $menu->kategori->nama_kategori }}</small>
+                    @endif
                 </div>
             </div>
         </div>
@@ -125,17 +128,17 @@
 </div>
 
 <!-- ===== NEWSLETTER ===== -->
-<div class="newsletter-section">
+    <div class="newsletter-section box-3d-dark">
     <div class="newsletter-content">
         <div class="row align-items-center">
             <div class="col-md-6 mb-3 mb-md-0">
-                <h3 class="newsletter-title">Join Our Coffee Community</h3>
-                <p class="newsletter-desc mb-0">Get exclusive offers, new updates and coffee tips straight to your inbox.</p>
+            <h3 class="newsletter-title">Bergabung dengan Komunitas Kopi Kami</h3>
+            <p class="newsletter-desc mb-0">Dapatkan penawaran eksklusif, pembaruan baru dan tips kopi langsung ke inbox Anda.</p>
             </div>
             <div class="col-md-6">
                 <form class="d-flex flex-column flex-md-row">
-                    <input type="email" class="newsletter-input" placeholder="Enter your email" required>
-                    <button type="submit" class="btn-subscribe">Subscribe</button>
+                    <input type="email" class="newsletter-input" placeholder="Masukkan email Anda" required>
+                    <button type="submit" class="btn-subscribe">Berlangganan</button>
                 </form>
             </div>
         </div>
@@ -144,11 +147,11 @@
 
 <!-- ===== EXISTING CONTENT (Tables & Menu) ===== -->
 <div class="row mb-4">
-    <div class="col-md-6">
-        <div class="card shadow-sm" style="border: none; border-radius: 16px;">
-            <div class="card-header" style="background: var(--dark-bg); color: #fff; border-radius: 16px 16px 0 0;">
-                <h5 class="mb-0"><i class="bi bi-grid-3x3-gap"></i> Layout Meja</h5>
-            </div>
+        <div class="col-md-6">
+            <div class="card shadow-card card-3d" style="border: none; border-radius: 16px;">
+                <div class="card-header" style="background: var(--dark-bg); color: #fff; border-radius: 16px 16px 0 0;">
+                    <h5 class="mb-0"><i class="bi bi-grid-3x3-gap"></i> Daftar Meja</h5>
+                </div>
             <div class="card-body">
                 <div class="table-grid">
                     @forelse($mejas as $meja)
@@ -166,11 +169,11 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="card shadow-sm" style="border: none; border-radius: 16px;">
-            <div class="card-header" style="background: var(--dark-bg); color: #fff; border-radius: 16px 16px 0 0;">
-                <h5 class="mb-0"><i class="bi bi-menu-app"></i> Menu Tersedia</h5>
-            </div>
+        <div class="col-md-6">
+            <div class="card shadow-card card-3d" style="border: none; border-radius: 16px;">
+                <div class="card-header" style="background: var(--dark-bg); color: #fff; border-radius: 16px 16px 0 0;">
+                    <h5 class="mb-0"><i class="bi bi-menu-app"></i> Menu yang Tersedia</h5>
+                </div>
             <div class="card-body">
                 <div class="row">
                     @forelse($menus->take(6) as $menu)
@@ -201,23 +204,23 @@
 
 <div class="row mb-4">
     <div class="col-md-4">
-        <div class="card stat-card text-center p-4" style="border: none; border-radius: 16px; box-shadow: var(--card-shadow);">
+        <div class="card stat-card text-center p-4 shadow-card card-3d" style="border: none; border-radius: 16px;">
             <i class="bi bi-calendar-check" style="font-size: 2rem; color: var(--primary-blue);"></i>
             <h5 class="mt-2" style="font-family: 'Playfair Display', serif;">Reservasi Meja</h5>
-            <p class="text-muted">Pesan meja untuk dine-in</p>
+            <p class="text-muted">Pesan meja untuk makan di tempat</p>
             <a href="{{ route('customer.reservasi.dinein') }}" class="btn" style="background: var(--primary-blue); color: #fff; border-radius: 10px;">Reservasi</a>
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card stat-card text-center p-4" style="border: none; border-radius: 16px; box-shadow: var(--card-shadow);">
+        <div class="card stat-card text-center p-4 shadow-card card-3d" style="border: none; border-radius: 16px;">
             <i class="bi bi-bag-plus" style="font-size: 2rem; color: #10b981;"></i>
-            <h5 class="mt-2" style="font-family: 'Playfair Display', serif;">Pick-Up</h5>
-            <p class="text-muted">Pesan dan ambil sendiri</p>
+            <h5 class="mt-2" style="font-family: 'Playfair Display', serif;">Ambil Sendiri</h5>
+            <p class="text-muted">Pesan dan ambil di tempat</p>
             <a href="{{ route('customer.pickup') }}" class="btn" style="background: #10b981; color: #fff; border-radius: 10px;">Pesan Sekarang</a>
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card stat-card text-center p-4" style="border: none; border-radius: 16px; box-shadow: var(--card-shadow);">
+        <div class="card stat-card text-center p-4 shadow-card card-3d" style="border: none; border-radius: 16px;">
             <i class="bi bi-clock-history" style="font-size: 2rem; color: #f59e0b;"></i>
             <h5 class="mt-2" style="font-family: 'Playfair Display', serif;">Riwayat Pesanan</h5>
             <p class="text-muted">Cek status pesanan Anda</p>

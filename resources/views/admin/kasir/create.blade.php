@@ -2,7 +2,7 @@
 
 @section('title', 'Kasir Walk-in')
 @section('content')
-<div class="card shadow-sm">
+<div class="card shadow-card card-3d">
     <div class="card-header bg-success text-white">
         <h5 class="mb-0"><i class="bi bi-cash-register"></i> Kasir Pesanan Langsung (Walk-in)</h5>
     </div>
@@ -16,11 +16,36 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="tipe" class="form-label">Tipe Pesanan</label>
-                    <select class="form-select" id="tipe" name="tipe">
+                    <select class="form-select" id="tipe" name="tipe" onchange="toggleMeja()">
                         <option value="dine-in">Dine-In (Makan di Tempat)</option>
                         <option value="pick-up">Pick-Up (Bungkus)</option>
                     </select>
                 </div>
+            </div>
+
+            {{-- Pilihan Meja (hanya untuk Dine-In) --}}
+            <div class="mb-4" id="mejaSection">
+                <label class="form-label fw-bold">Pilih Meja</label>
+                <div class="row">
+                    @forelse($mejas as $meja)
+                        <div class="col-md-3 col-lg-2 mb-2">
+                            <div class="form-check meja-option">
+                                <input class="form-check-input" type="radio" name="id_meja" id="meja{{ $meja->id_meja }}" value="{{ $meja->id_meja }}">
+                                <label class="form-check-label border rounded p-2 d-block text-center cursor-pointer" for="meja{{ $meja->id_meja }}" style="cursor: pointer;">
+                                    <strong>{{ $meja->nomor_meja }}</strong>
+                                    <small class="d-block text-muted">{{ $meja->kapasitas }} kursi</small>
+                                </label>
+                            </div>
+                        </div>
+                    @empty
+                        <div class="col-12">
+                            <p class="text-muted mb-0">Tidak ada meja tersedia saat ini.</p>
+                        </div>
+                    @endforelse
+                </div>
+                @error('id_meja')
+                    <div class="text-danger mt-1">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="mb-4">
@@ -28,7 +53,7 @@
                 <div class="row" id="menuList">
                     @foreach($menus as $menu)
                         <div class="col-md-4 col-lg-3 mb-3">
-                            <div class="card card-menu shadow-sm" data-menu-id="{{ $menu->id_menu }}" data-harga="{{ $menu->harga }}">
+                            <div class="card card-menu shadow-card card-3d" data-menu-id="{{ $menu->id_menu }}" data-harga="{{ $menu->harga }}">
                                 <div class="card-body p-3">
                                     <h6 class="mb-0">{{ $menu->nama_menu }}</h6>
                                     <p class="text-primary mb-1">Rp {{ number_format($menu->harga, 0, ',', '.') }}</p>
@@ -51,6 +76,14 @@
 
 @push('scripts')
 <script>
+// Toggle tampilan meja berdasarkan tipe
+function toggleMeja() {
+    const tipe = document.getElementById('tipe').value;
+    document.getElementById('mejaSection').style.display = tipe === 'dine-in' ? 'block' : 'none';
+}
+toggleMeja();
+
+// Menu quantity controls
 document.querySelectorAll('.card-menu').forEach(card => {
     const menuId = card.dataset.menuId;
     const harga = parseInt(card.dataset.harga);
@@ -91,6 +124,12 @@ document.getElementById('formKasir').addEventListener('submit', function(e) {
     let hasItem = false;
     document.querySelectorAll('.qty-text').forEach(el => { if (parseInt(el.textContent) > 0) hasItem = true; });
     if (!hasItem) { e.preventDefault(); alert('Silakan pilih minimal 1 menu.'); return; }
+
+    // Validasi meja untuk dine-in
+    if (document.getElementById('tipe').value === 'dine-in') {
+        const mejaSelected = document.querySelector('input[name="id_meja"]:checked');
+        if (!mejaSelected) { e.preventDefault(); alert('Silakan pilih meja untuk Dine-In.'); return; }
+    }
 
     document.querySelectorAll('.qty-text').forEach(el => {
         const qty = parseInt(el.textContent) || 0;

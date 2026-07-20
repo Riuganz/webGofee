@@ -43,17 +43,35 @@
             return;
         }
 
+        // Fix scroll: pastikan body tidak terkunci oleh Midtrans
+        document.documentElement.classList.add('midtrans-open');
+        document.body.classList.add('midtrans-open');
+
+        // Monitor dan override style overflow yang di-set Midtrans
+        const scrollFix = setInterval(function() {
+            if (document.body.style.overflow === 'hidden') {
+                document.body.style.overflow = '';
+                document.documentElement.style.overflow = '';
+            }
+        }, 100);
+
         snap.pay(snapToken, {
             onSuccess: function(result) {
+                clearInterval(scrollFix);
                 window.location.href = getFinishUrl('success', result.order_id);
             },
             onPending: function(result) {
+                clearInterval(scrollFix);
                 window.location.href = getFinishUrl('pending', result.order_id);
             },
             onError: function(result) {
+                clearInterval(scrollFix);
                 window.location.href = getFinishUrl('error', result.order_id);
             },
             onClose: function() {
+                clearInterval(scrollFix);
+                document.documentElement.classList.remove('midtrans-open');
+                document.body.classList.remove('midtrans-open');
                 resetPaymentButton(payButton, loadingDiv);
             }
         });

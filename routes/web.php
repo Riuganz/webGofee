@@ -37,12 +37,12 @@ Route::middleware(['auth'])->prefix('customer')->name('customer.')->group(functi
     Route::post('/reservasi', [CustomerReservasiController::class, 'store'])->name('reservasi.store');
     Route::get('/riwayat', [CustomerReservasiController::class, 'riwayat'])->name('riwayat');
 
-    // Payment routes
-    Route::get('/payment/{reservasi}', [CustomerPaymentController::class, 'show'])->name('payment.show');
-    Route::post('/payment/{reservasi}/process', [CustomerPaymentController::class, 'process'])->name('payment.process');
+    // Payment routes (routes spesifik harus SEBELUM route wildcard {reservasi})
     Route::get('/payment/finish', [CustomerPaymentController::class, 'finish'])->name('payment.finish');
     Route::get('/payment/unfinish', [CustomerPaymentController::class, 'unfinish'])->name('payment.unfinish');
     Route::get('/payment/error', [CustomerPaymentController::class, 'error'])->name('payment.error');
+    Route::get('/payment/{reservasi}', [CustomerPaymentController::class, 'show'])->name('payment.show');
+    Route::post('/payment/{reservasi}/process', [CustomerPaymentController::class, 'process'])->name('payment.process');
 });
 
 // Webhook Midtrans (tanpa middleware CSRF)

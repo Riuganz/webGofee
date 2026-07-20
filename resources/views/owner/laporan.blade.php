@@ -17,7 +17,7 @@
     </div>
 </div>
 
-<div class="card shadow-sm mb-4">
+<div class="card shadow-card card-3d mb-4">
     <div class="card-body">
         <form method="GET" action="{{ route('owner.laporan') }}" class="row g-3">
             <div class="col-md-4">
@@ -38,7 +38,7 @@
 
 <div class="row mb-4">
     <div class="col-md-6">
-        <div class="card stat-card bg-success text-white">
+        <div class="card stat-card bg-success text-white card-3d">
             <div class="card-body">
                 <h6>Total Pendapatan</h6>
                 <h2 class="mb-0">Rp {{ number_format($totalRevenue, 0, ',', '.') }}</h2>
@@ -46,7 +46,7 @@
         </div>
     </div>
     <div class="col-md-6">
-        <div class="card stat-card bg-info text-white">
+        <div class="card stat-card bg-info text-white card-3d">
             <div class="card-body">
                 <h6>Total Transaksi Sukses</h6>
                 <h2 class="mb-0">{{ $totalTransactions }}</h2>
@@ -56,7 +56,7 @@
 </div>
 
 @if($dailyBreakdown->count() > 0)
-    <div class="card shadow-sm mb-4">
+    <div class="card shadow-card card-3d mb-4">
         <div class="card-header bg-dark text-white">
             <h5 class="mb-0"><i class="bi bi-bar-chart"></i> Rekapitulasi Harian</h5>
         </div>
@@ -83,7 +83,7 @@
     </div>
 @endif
 
-<div class="card shadow-sm">
+<div class="card shadow-card card-3d">
     <div class="card-header bg-dark text-white">
         <h5 class="mb-0"><i class="bi bi-list"></i> Detail Transaksi</h5>
     </div>

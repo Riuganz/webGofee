@@ -7,7 +7,7 @@
     <a href="{{ route('admin.menu.create') }}" class="btn btn-primary"><i class="bi bi-plus-lg"></i> Tambah Menu</a>
 </div>
 
-<div class="card shadow-sm">
+<div class="card shadow-card card-3d">
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-hover">

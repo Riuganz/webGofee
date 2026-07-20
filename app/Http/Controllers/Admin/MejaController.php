@@ -8,10 +8,24 @@ use Illuminate\Http\Request;
 
 class MejaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $mejas = Meja::orderBy('nomor_meja')->get();
-        return view('admin.meja.index', compact('mejas'));
+        $query = Meja::orderBy('nomor_meja');
+
+        // Filter berdasarkan status
+        if ($request->filled('status')) {
+            $query->where('status_meja', $request->status);
+        }
+
+        // Pencarian berdasarkan nomor meja
+        if ($request->filled('cari')) {
+            $query->where('nomor_meja', 'like', '%' . $request->cari . '%');
+        }
+
+        $mejas = $query->get();
+
+        $statuses = ['Tersedia', 'Terisi', 'Dibooking'];
+        return view('admin.meja.index', compact('mejas', 'statuses'));
     }
 
     public function create()

@@ -19,13 +19,154 @@
             --hover-shadow: 0 20px 60px rgba(0,0,0,0.15);
         }
 
+        /* ===== 3D BOX EFFECTS ===== */
+        .box-3d {
+            position: relative;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        /* Bevel Effect - Raised/Lifted */
+        .box-3d-bevel {
+            background: #fff;
+            border: 2px solid #e8e8e8;
+            box-shadow: 
+                inset 1px 1px 2px rgba(255,255,255,0.8),
+                inset -1px -1px 2px rgba(0,0,0,0.1),
+                0 4px 8px rgba(0,0,0,0.1),
+                0 8px 16px rgba(0,0,0,0.08),
+                0 12px 24px rgba(0,0,0,0.06);
+            transform: translateY(0);
+        }
+
+        .box-3d-bevel:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                inset 1px 1px 3px rgba(255,255,255,0.9),
+                inset -1px -1px 3px rgba(0,0,0,0.12),
+                0 8px 16px rgba(0,0,0,0.15),
+                0 16px 32px rgba(0,0,0,0.12),
+                0 24px 48px rgba(0,0,0,0.1);
+        }
+
+        /* Emboss Effect - Pressed/Inset */
+        .box-3d-emboss {
+            background: #fff;
+            border: 2px solid #d0d0d0;
+            box-shadow: 
+                inset 2px 2px 4px rgba(0,0,0,0.15),
+                inset -2px -2px 4px rgba(255,255,255,0.9),
+                0 2px 4px rgba(0,0,0,0.08);
+            transform: translateY(0);
+        }
+
+        .box-3d-emboss:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                inset 1px 1px 2px rgba(0,0,0,0.1),
+                inset -1px -1px 2px rgba(255,255,255,0.8),
+                0 4px 8px rgba(0,0,0,0.12),
+                0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        /* Elevated 3D Box */
+        .box-3d-elevated {
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 
+                0 1px 2px rgba(0,0,0,0.05),
+                0 4px 8px rgba(0,0,0,0.08),
+                0 8px 16px rgba(0,0,0,0.1),
+                0 16px 32px rgba(0,0,0,0.12),
+                0 24px 48px rgba(0,0,0,0.08);
+            transform: translateY(0);
+        }
+
+        .box-3d-elevated:hover {
+            transform: translateY(-6px);
+            box-shadow: 
+                0 2px 4px rgba(0,0,0,0.08),
+                0 8px 16px rgba(0,0,0,0.12),
+                0 16px 32px rgba(0,0,0,0.15),
+                0 24px 48px rgba(0,0,0,0.18),
+                0 32px 64px rgba(0,0,0,0.12);
+        }
+
+        /* Card 3D Variants */
+        .card-3d {
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 16px;
+            box-shadow: 
+                0 2px 4px rgba(0,0,0,0.06),
+                0 4px 8px rgba(0,0,0,0.08),
+                0 8px 16px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card-3d:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 4px 8px rgba(0,0,0,0.1),
+                0 8px 16px rgba(0,0,0,0.12),
+                0 16px 32px rgba(0,0,0,0.15),
+                0 24px 48px rgba(0,0,0,0.12);
+        }
+
+        /* Dark 3D Box */
+        .box-3d-dark {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 
+                inset 1px 1px 2px rgba(255,255,255,0.2),
+                inset -1px -1px 2px rgba(0,0,0,0.3),
+                0 4px 8px rgba(0,0,0,0.2),
+                0 8px 16px rgba(0,0,0,0.15),
+                0 12px 24px rgba(0,0,0,0.1);
+            transform: translateY(0);
+        }
+
+        .box-3d-dark:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                inset 1px 1px 3px rgba(255,255,255,0.25),
+                inset -1px -1px 3px rgba(0,0,0,0.35),
+                0 8px 16px rgba(0,0,0,0.25),
+                0 16px 32px rgba(0,0,0,0.2),
+                0 24px 48px rgba(0,0,0,0.15);
+        }
+
+        /* Enhanced shadow classes for all boxes */
+        .shadow-enhanced {
+            box-shadow: 
+                0 2px 4px rgba(0,0,0,0.06),
+                0 4px 8px rgba(0,0,0,0.08),
+                0 8px 16px rgba(0,0,0,0.1) !important;
+            border: 1px solid rgba(0,0,0,0.05) !important;
+        }
+        
+        .shadow-card {
+            box-shadow: 
+                0 2px 4px rgba(0,0,0,0.08),
+                0 4px 8px rgba(0,0,0,0.1),
+                0 8px 16px rgba(0,0,0,0.12) !important;
+            border: 1px solid rgba(0,0,0,0.06) !important;
+        }
+        
+        .shadow-elevated {
+            box-shadow: 
+                0 4px 8px rgba(0,0,0,0.1),
+                0 8px 16px rgba(0,0,0,0.12),
+                0 16px 32px rgba(0,0,0,0.15) !important;
+            border: 1px solid rgba(0,0,0,0.08) !important;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--cream-bg);
             color: #1a1a2e;
-            overflow-x: hidden;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -94,6 +235,21 @@
             position: relative;
             z-index: 1;
         }
+
+        /* Fix scroll pada popup Midtrans Snap */
+        html.midtrans-open,
+        body.midtrans-open {
+            overflow: visible !important;
+            position: static !important;
+        }
+        #snap-midtrans,
+        #snap-midtrans iframe,
+        .midtrans-frame,
+        iframe[src*="midtrans"] {
+            max-height: 100vh !important;
+            overflow-y: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+        }
         .navbar-coffee .dropdown-menu-end {
             right: 0 !important;
             left: auto !important;
@@ -144,6 +300,7 @@
             overflow: hidden;
             min-height: 500px;
             margin-bottom: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
         }
         .hero-premium::before {
             content: '';
@@ -268,10 +425,12 @@
             padding: 1.5rem;
             transition: all 0.3s ease;
             height: 100%;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
         }
         .feature-card:hover {
             background: rgba(255,255,255,0.12);
             transform: translateY(-5px);
+            box-shadow: 0 12px 48px rgba(0,0,0,0.2);
         }
         .feature-icon {
             font-size: 2rem;
@@ -370,7 +529,7 @@
             box-shadow: var(--card-shadow);
             transition: all 0.3s ease;
             height: 100%;
-            border: none;
+            border: 1px solid rgba(0,0,0,0.06);
         }
         .product-card:hover {
             transform: translateY(-8px);
@@ -418,6 +577,7 @@
             margin: 3rem 0;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 15px 50px rgba(37,99,235,0.3);
         }
         .newsletter-section::before {
             content: '';
@@ -504,10 +664,10 @@
         }
 
         /* ===== EXISTING STYLES (PRESERVED) ===== */
-        .card-menu:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .card-menu { transition: all 0.3s ease; cursor: pointer; }
-        .meja-card { border: 2px solid #dee2e6; border-radius: 10px; padding: 1rem; text-align: center; cursor: pointer; transition: all 0.3s ease; }
-        .meja-card:hover { transform: scale(1.05); }
+        .card-menu:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
+        .card-menu { transition: all 0.3s ease; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .meja-card { border: 2px solid #dee2e6; border-radius: 10px; padding: 1rem; text-align: center; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .meja-card:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
         .meja-card.tersedia { border-color: #28a745; background-color: #d4edda; }
         .meja-card.terisi { border-color: #dc3545; background-color: #f8d7da; }
         .meja-card.dibooking { border-color: #ffc107; background-color: #fff3cd; }

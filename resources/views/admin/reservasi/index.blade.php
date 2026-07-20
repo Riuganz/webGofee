@@ -6,7 +6,36 @@
     <h3><i class="bi bi-calendar-check"></i> Daftar Reservasi</h3>
 </div>
 
-<div class="card shadow-sm">
+{{-- Form Filter --}}
+<div class="card shadow-card card-3d mb-4">
+    <div class="card-body">
+        <form method="GET" action="{{ route('admin.reservasi.index') }}" class="row g-3 align-items-end">
+            <div class="col-md-3">
+                <label for="status" class="form-label fw-semibold">Status</label>
+                <select class="form-select" id="status" name="status">
+                    <option value="">Semua Status</option>
+                    @foreach($statuses as $s)
+                        <option value="{{ $s }}" {{ request('status') == $s ? 'selected' : '' }}>{{ $s }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="tanggal_mulai" class="form-label fw-semibold">Tanggal Mulai</label>
+                <input type="date" class="form-control" id="tanggal_mulai" name="tanggal_mulai" value="{{ request('tanggal_mulai') }}">
+            </div>
+            <div class="col-md-3">
+                <label for="tanggal_akhir" class="form-label fw-semibold">Tanggal Akhir</label>
+                <input type="date" class="form-control" id="tanggal_akhir" name="tanggal_akhir" value="{{ request('tanggal_akhir') }}">
+            </div>
+            <div class="col-md-3 d-flex gap-2">
+                <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> Filter</button>
+                <a href="{{ route('admin.reservasi.index') }}" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Reset</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card shadow-card card-3d">
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-hover">

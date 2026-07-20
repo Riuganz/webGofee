@@ -15,8 +15,46 @@
         .sidebar .nav-link i { margin-right: 8px; }
         .sidebar .brand { color: #fff; font-weight: 800; font-size: 1.2rem; padding: 1rem; text-align: center; }
         .content { padding: 2rem; }
-        .stat-card { border-radius: 10px; border: none; box-shadow: 0 2px 6px rgba(0,0,0,0.05); transition: all 0.3s; }
-        .stat-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        /* ===== 3D BOX EFFECTS FOR ADMIN ===== */
+        .stat-card {
+            border-radius: 16px;
+            border: 1px solid rgba(0,0,0,0.06);
+            box-shadow: 
+                0 2px 4px rgba(0,0,0,0.06),
+                0 4px 8px rgba(0,0,0,0.08),
+                0 8px 16px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 4px 8px rgba(0,0,0,0.1),
+                0 8px 16px rgba(0,0,0,0.12),
+                0 16px 32px rgba(0,0,0,0.15),
+                0 24px 48px rgba(0,0,0,0.12);
+        }
+
+        .card {
+            border-radius: 16px;
+            border: 1px solid rgba(0,0,0,0.06);
+            box-shadow: 
+                0 2px 4px rgba(0,0,0,0.06),
+                0 4px 8px rgba(0,0,0,0.08),
+                0 8px 16px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            box-shadow: 
+                0 4px 8px rgba(0,0,0,0.1),
+                0 8px 16px rgba(0,0,0,0.12),
+                0 16px 32px rgba(0,0,0,0.15);
+        }
+
+        .card-header {
+            border-radius: 16px 16px 0 0 !important;
+        }
+
         .table th { background: #f8f9fa; }
         @media (max-width: 768px) { .sidebar { min-height: auto; } }
     </style>

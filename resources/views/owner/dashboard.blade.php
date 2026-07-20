@@ -9,7 +9,7 @@
 
 <div class="row mb-4">
     <div class="col-md-3 mb-3">
-        <div class="card stat-card bg-primary text-white">
+        <div class="card stat-card bg-primary text-white card-3d">
             <div class="card-body">
                 <h6>Reservasi Hari Ini</h6>
                 <h2 class="mb-0">{{ $todayReservasi }}</h2>
@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="col-md-3 mb-3">
-        <div class="card stat-card bg-success text-white">
+        <div class="card stat-card bg-success text-white card-3d">
             <div class="card-body">
                 <h6>Pendapatan Hari Ini</h6>
                 <h2 class="mb-0">Rp {{ number_format($todayRevenue, 0, ',', '.') }}</h2>
@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="col-md-3 mb-3">
-        <div class="card stat-card bg-info text-white">
+        <div class="card stat-card bg-info text-white card-3d">
             <div class="card-body">
                 <h6>Pendapatan Minggu Ini</h6>
                 <h2 class="mb-0">Rp {{ number_format($weeklyRevenue, 0, ',', '.') }}</h2>
@@ -33,7 +33,7 @@
         </div>
     </div>
     <div class="col-md-3 mb-3">
-        <div class="card stat-card bg-warning text-dark">
+        <div class="card stat-card bg-warning text-dark card-3d">
             <div class="card-body">
                 <h6>Pendapatan Bulan Ini</h6>
                 <h2 class="mb-0">Rp {{ number_format($monthlyRevenue, 0, ',', '.') }}</h2>
@@ -44,7 +44,7 @@
 
 <div class="row mb-4">
     <div class="col-md-12">
-        <div class="card shadow-sm">
+        <div class="card shadow-card card-3d">
             <div class="card-header bg-dark text-white">
                 <h5 class="mb-0"><i class="bi bi-graph-up"></i> Grafik Pendapatan 7 Hari Terakhir</h5>
             </div>
@@ -74,7 +74,7 @@
     </div>
 </div>
 
-<div class="card shadow-sm">
+<div class="card shadow-card card-3d">
     <div class="card-header bg-dark text-white">
         <h5 class="mb-0"><i class="bi bi-list"></i> Reservasi Terbaru</h5>
     </div>

@@ -7,7 +7,7 @@
 </div>
 
 @forelse($reservasis as $reservasi)
-    <div class="card shadow-sm mb-3">
+    <div class="card shadow-card card-3d mb-3">
         <div class="card-header d-flex justify-content-between align-items-center
             @if($reservasi->status_reservasi == 'Menunggu Konfirmasi') bg-warning text-dark
             @elseif($reservasi->status_reservasi == 'Diterima') bg-info text-white

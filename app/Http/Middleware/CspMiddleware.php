@@ -41,17 +41,6 @@ class CspMiddleware
         return $response;
     }
 
-    /**
-     * Build the Content-Security-Policy header value.
-     *
-     * NOTE: 'unsafe-inline' is used here because Midtrans Snap dynamically
-     * injects inline scripts and styles at runtime (via snap.js), which
-     * cannot be pre-covered by a nonce. When a nonce is present in a CSP
-     * directive, the browser ignores 'unsafe-inline' per CSP specification,
-     * so we intentionally omit the nonce from the CSP header directives.
-     * The nonce attribute on HTML <script>/<style> tags is kept for
-     * documentation / future migration purposes.
-     */
     private function buildCspHeader(): string
     {
         $scriptSources = [

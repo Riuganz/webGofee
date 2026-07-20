@@ -7,7 +7,32 @@
     <a href="{{ route('admin.meja.create') }}" class="btn btn-primary"><i class="bi bi-plus-lg"></i> Tambah Meja</a>
 </div>
 
-<div class="card shadow-sm">
+{{-- Form Filter --}}
+<div class="card shadow-card card-3d mb-4">
+    <div class="card-body">
+        <form method="GET" action="{{ route('admin.meja.index') }}" class="row g-3 align-items-end">
+            <div class="col-md-4">
+                <label for="cari" class="form-label fw-semibold">Cari Nomor Meja</label>
+                <input type="text" class="form-control" id="cari" name="cari" placeholder="Ketik nomor meja..." value="{{ request('cari') }}">
+            </div>
+            <div class="col-md-3">
+                <label for="status" class="form-label fw-semibold">Status</label>
+                <select class="form-select" id="status" name="status">
+                    <option value="">Semua Status</option>
+                    @foreach($statuses as $s)
+                        <option value="{{ $s }}" {{ request('status') == $s ? 'selected' : '' }}>{{ $s }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-3 d-flex gap-2">
+                <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> Filter</button>
+                <a href="{{ route('admin.meja.index') }}" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Reset</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card shadow-card card-3d">
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-hover">

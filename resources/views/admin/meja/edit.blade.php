@@ -2,7 +2,7 @@
 
 @section('title', 'Edit Meja')
 @section('content')
-<div class="card shadow-sm">
+<div class="card shadow-card card-3d">
     <div class="card-header bg-dark text-white">
         <h5 class="mb-0"><i class="bi bi-pencil"></i> Edit Meja {{ $meja->nomor_meja }}</h5>
     </div>

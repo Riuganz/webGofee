@@ -2,46 +2,77 @@
 
 @section('title', 'Reservasi Dine-In')
 @section('content')
-<div class="card shadow-sm">
+<div class="card shadow-card card-3d">
     <div class="card-header bg-dark text-white">
         <h5 class="mb-0"><i class="bi bi-calendar-check"></i> Form Reservasi Dine-In</h5>
     </div>
     <div class="card-body">
+        {{-- BAGIAN 1: FORM FILTER (GET) --}}
+        <form method="GET" action="{{ route('customer.reservasi.dinein') }}" class="mb-4 p-3 bg-light rounded border box-3d-bevel">
+            <div class="row align-items-end">
+                <div class="col-md-4">
+                    <div class="mb-3 mb-md-0">
+                        <label for="filter_tanggal" class="form-label fw-semibold">Tanggal Kunjungan</label>
+                        <input type="date" class="form-control" id="filter_tanggal" name="tanggal" value="{{ request('tanggal', date('Y-m-d')) }}" min="{{ date('Y-m-d') }}" onchange="this.form.submit()" required>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="mb-3 mb-md-0">
+                        <label for="filter_jam" class="form-label fw-semibold">Jam Kedatangan</label>
+                        <input type="time" class="form-control" id="filter_jam" name="jam" value="{{ request('jam', date('H:i')) }}" onchange="this.form.submit()" required>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="mb-3 mb-md-0">
+                        <label for="filter_jumlah_orang" class="form-label fw-semibold">Jumlah Orang</label>
+                        <input type="number" class="form-control" id="filter_jumlah_orang" name="jumlah_orang" value="{{ request('jumlah_orang', 1) }}" min="1" onchange="this.form.submit()" required>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="bi bi-search"></i> Cari Meja
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        {{-- BAGIAN 2: GRID MEJA (hanya muncul setelah filter diklik) --}}
+        @if(request()->has('tanggal'))
         <form method="POST" action="{{ route('customer.reservasi.store') }}" id="formReservasi">
             @csrf
             <input type="hidden" name="tipe" value="dine-in">
-
-            <div class="row mb-4">
-                <div class="col-md-4">
-                    <div class="mb-3">
-                        <label for="tanggal" class="form-label">Tanggal Kunjungan</label>
-                        <input type="date" class="form-control @error('tanggal') is-invalid @enderror" id="tanggal" name="tanggal" value="{{ old('tanggal', date('Y-m-d')) }}" min="{{ date('Y-m-d') }}" required>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="mb-3">
-                        <label for="jam" class="form-label">Jam Kedatangan</label>
-                        <input type="time" class="form-control @error('jam') is-invalid @enderror" id="jam" name="jam" value="{{ old('jam', date('H:i')) }}" required>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="mb-3">
-                        <label for="jumlah_orang" class="form-label">Jumlah Orang</label>
-                        <input type="number" class="form-control @error('jumlah_orang') is-invalid @enderror" id="jumlah_orang" name="jumlah_orang" value="{{ old('jumlah_orang', 1) }}" min="1" required>
-                    </div>
-                </div>
-            </div>
+            <input type="hidden" name="tanggal" value="{{ $tanggal }}">
+            <input type="hidden" name="jam" value="{{ $jam }}">
+            <input type="hidden" name="jumlah_orang" value="{{ $jumlahOrang }}">
 
             <div class="mb-4">
-                <label class="form-label fw-bold">Pilih Meja (Tersedia)</label>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <label class="form-label fw-bold mb-0">Pilih Meja (Tersedia)</label>
+                    <small class="text-muted">Tanggal: {{ \Carbon\Carbon::parse($tanggal)->isoFormat('dddd, D MMMM YYYY') }} | Jam: {{ $jam }} | {{ $jumlahOrang }} orang</small>
+                </div>
                 <div class="table-grid" id="mejaGrid">
-                    @foreach($mejas as $meja)
-                        <div class="meja-card tersedia" data-id="{{ $meja->id_meja }}" data-nomor="{{ $meja->nomor_meja }}" onclick="pilihMeja(this)">
+                    @forelse($mejas as $meja)
+                        @php
+                            $isBooked = in_array($meja->id_meja, $bookedMejaIds);
+                            $statusClass = $isBooked ? 'terisi' : 'tersedia';
+                            $statusBadge = $isBooked ? 'Terisi' : 'Tersedia';
+                            $badgeClass = $isBooked ? 'bg-danger' : 'bg-success';
+                        @endphp
+                        <div class="meja-card {{ $statusClass }} @if(!$isBooked) cursor-pointer @endif"
+                             data-id="{{ $meja->id_meja }}"
+                             data-nomor="{{ $meja->nomor_meja }}"
+                             data-kapasitas="{{ $meja->kapasitas }}"
+                             onclick="{{ $isBooked ? '' : "pilihMeja(this)" }}"
+                             @if($isBooked) style="opacity: 0.6; cursor: not-allowed;" @endif>
                             <strong>{{ $meja->nomor_meja }}</strong>
                             <small class="d-block">{{ $meja->kapasitas }} kursi</small>
-                            <span class="badge bg-success">Tersedia</span>
+                            <span class="badge {{ $badgeClass }}">{{ $statusBadge }}</span>
                         </div>
-                    @endforeach
+                    @empty
+                        <div class="col-12 text-center py-4">
+                            <p class="text-muted mb-0">Tidak ada meja yang tersedia untuk kriteria ini.</p>
+                        </div>
+                    @endforelse
                 </div>
                 <input type="hidden" name="id_meja" id="id_meja" value="{{ old('id_meja') }}">
                 @error('id_meja')
@@ -54,7 +85,7 @@
                 <div class="row" id="menuList">
                     @foreach($menus as $menu)
                         <div class="col-md-4 col-lg-3 mb-3">
-                            <div class="card card-menu shadow-sm" data-menu-id="{{ $menu->id_menu }}" data-harga="{{ $menu->harga }}">
+                            <div class="card card-menu shadow-card card-3d" data-menu-id="{{ $menu->id_menu }}" data-harga="{{ $menu->harga }}">
                                 <div class="card-body p-3">
                                     <div class="d-flex justify-content-between align-items-start">
                                         <h6 class="mb-0">{{ $menu->nama_menu }}</h6>
@@ -99,6 +130,14 @@
                 <button type="submit" class="btn btn-dark btn-lg">Buat Pesanan</button>
             </div>
         </form>
+        @else
+        {{-- Tampilkan pesan jika belum filter --}}
+        <div class="text-center py-5">
+            <i class="bi bi-calendar-range" style="font-size: 3rem; color: #dee2e6;"></i>
+            <h5 class="mt-3 text-muted">Silakan pilih tanggal, jam, dan jumlah orang</h5>
+            <p class="text-muted">Klik tombol <strong>"Cari Meja"</strong> untuk melihat ketersediaan meja.</p>
+        </div>
+        @endif
     </div>
 </div>
 
@@ -163,7 +202,7 @@ function hitungTotal() {
     document.getElementById('totalHarga').textContent = total.toLocaleString('id-ID');
 }
 
-document.getElementById('formReservasi').addEventListener('submit', function(e) {
+document.getElementById('formReservasi')?.addEventListener('submit', function(e) {
     const idMeja = document.getElementById('id_meja').value;
     if (!idMeja) { e.preventDefault(); alert('Silakan pilih meja terlebih dahulu.'); return; }
     let hasItem = false;

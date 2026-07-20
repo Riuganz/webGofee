@@ -2,7 +2,7 @@
 
 @section('title', 'Tambah Menu')
 @section('content')
-<div class="card shadow-sm">
+<div class="card shadow-card card-3d">
     <div class="card-header bg-dark text-white">
         <h5 class="mb-0"><i class="bi bi-plus-lg"></i> Tambah Menu Baru</h5>
     </div>

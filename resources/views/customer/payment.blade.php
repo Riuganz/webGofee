@@ -9,10 +9,10 @@
 <meta name="reservasi-id" content="{{ $reservasi->id_reservasi }}">
 <div class="row justify-content-center">
     <div class="col-md-8">
-        <div class="card shadow-sm">
-            <div class="card-header bg-primary text-white">
-                <h5 class="mb-0"><i class="bi bi-credit-card"></i> Pembayaran Pesanan #{{ $reservasi->id_reservasi }}</h5>
-            </div>
+<div class="card shadow-card card-3d">
+    <div class="card-header bg-dark text-white">
+        <h5 class="mb-0"><i class="bi bi-credit-card"></i> Pembayaran</h5>
+    </div>
             <div class="card-body">
                 @if(session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>

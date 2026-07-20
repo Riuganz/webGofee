@@ -13,6 +13,7 @@ class DashboardController extends Controller
     {
         $mejas = Meja::all();
         $menus = Menu::with('kategori')->where('stok_status', 'Tersedia')->get();
-        return view('customer.dashboard', compact('mejas', 'menus'));
+        $popularMenus = Menu::with('kategori')->where('stok_status', 'Tersedia')->inRandomOrder()->limit(4)->get();
+        return view('customer.dashboard', compact('mejas', 'menus', 'popularMenus'));
     }
 }

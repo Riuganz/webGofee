@@ -8,12 +8,29 @@ use Illuminate\Http\Request;
 
 class ReservasiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $reservasis = Reservasi::with(['user', 'meja', 'detailPesanans.menu'])
-            ->orderBy('created_at', 'desc')
-            ->get();
-        return view('admin.reservasi.index', compact('reservasis'));
+        $query = Reservasi::with(['user', 'meja', 'detailPesanans.menu']);
+
+        // Filter berdasarkan status
+        if ($request->filled('status')) {
+            $query->where('status_reservasi', $request->status);
+        }
+
+        // Filter berdasarkan rentang tanggal
+        if ($request->filled('tanggal_mulai')) {
+            $query->whereDate('tanggal', '>=', $request->tanggal_mulai);
+        }
+        if ($request->filled('tanggal_akhir')) {
+            $query->whereDate('tanggal', '<=', $request->tanggal_akhir);
+        }
+
+        $reservasis = $query->orderBy('created_at', 'desc')->get();
+
+        // Ambil daftar status untuk dropdown filter
+        $statuses = ['Menunggu Konfirmasi', 'Diterima', 'Selesai', 'Dibatalkan'];
+
+        return view('admin.reservasi.index', compact('reservasis', 'statuses'));
     }
 
     public function show(Reservasi $reservasi)
